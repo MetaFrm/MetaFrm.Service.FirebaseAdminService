@@ -68,7 +68,7 @@ namespace MetaFrm.Service
 
                         imageUrlType = serviceData.Commands[key].Values[i][nameof(Notification.ImageUrl)].StringValue ?? "";
                         if (imageUrlType.IsNullOrEmpty())
-                            imageUrlType = "Complete";
+                            imageUrlType = "OK";
 
                         keyValues = null;
                         dataJson = serviceData.Commands[key].Values[i][nameof(Message.Data)].StringValue ?? "";
@@ -166,7 +166,7 @@ namespace MetaFrm.Service
             serviceData1["1"].AddParameter("Token", DbType.NVarChar, 4000, tmp);
             serviceData1["1"].AddParameter("Title", DbType.NVarChar, 4000, $"Title {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
             serviceData1["1"].AddParameter("Body", DbType.NVarChar, 4000, $"Body {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-            serviceData1["1"].AddParameter("ImageUrl", DbType.NVarChar, 4000, "Complete");
+            serviceData1["1"].AddParameter("ImageUrl", DbType.NVarChar, 4000, "OK");
             serviceData1["1"].AddParameter("Data", DbType.NVarChar, 4000, JsonSerializer.Serialize(new Dictionary<string, string> { { "Menu", "7,8" }, { "Search", "NAMESPACE" } }));
             serviceData1["1"].NewRow();
 
@@ -174,7 +174,7 @@ namespace MetaFrm.Service
             serviceData1["1"].SetValue("Token", tmp);
             serviceData1["1"].SetValue("Title", $"Title {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
             serviceData1["1"].SetValue("Body", $"Body {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-            serviceData1["1"].SetValue("ImageUrl", "Complete");
+            serviceData1["1"].SetValue("ImageUrl", "OK");
             serviceData1["1"].SetValue("Data", JsonSerializer.Serialize(new Dictionary<string, string> { { "Menu", "7,8" }, { "Search", "NAMESPACE" } }));
 
             string tmp1 = JsonSerializer.Serialize(serviceData1);
