@@ -62,13 +62,23 @@ namespace MetaFrm.Service
                 {
                     for (int i = 0; i < serviceData.Commands[key].Values.Count; i++)
                     {
-                        string imageUrlType;
+                        string? imageUrlType;
                         string? dataJson;
                         Dictionary<string, string>? keyValues;
 
-                        imageUrlType = serviceData.Commands[key].Values[i][nameof(Notification.ImageUrl)].StringValue ?? "";
-                        if (imageUrlType.IsNullOrEmpty())
-                            imageUrlType = "OK";
+                        try
+                        {
+                            imageUrlType = serviceData.Commands[key].Values[i][nameof(Notification.ImageUrl)].StringValue ?? "";
+                            if (imageUrlType.IsNullOrEmpty())
+                                imageUrlType = "OK";
+
+                            imageUrlType = this.GetAttribute(imageUrlType);
+                        }
+                        catch (Exception exception)
+                        {
+                            DiagnosticsTool.MyTrace(exception);
+                            imageUrlType = null;
+                        }
 
                         keyValues = null;
                         dataJson = serviceData.Commands[key].Values[i][nameof(Message.Data)].StringValue ?? "";
@@ -82,7 +92,7 @@ namespace MetaFrm.Service
                             {
                                 Title = serviceData.Commands[key].Values[i][nameof(Notification.Title)].StringValue,
                                 Body = serviceData.Commands[key].Values[i][nameof(Notification.Body)].StringValue,
-                                ImageUrl = this.GetAttribute(imageUrlType),
+                                ImageUrl = imageUrlType.IsNullOrEmpty() ? null : imageUrlType,
                             },
                             Data = keyValues,
                         });
