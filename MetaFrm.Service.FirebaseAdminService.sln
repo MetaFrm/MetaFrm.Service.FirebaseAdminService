@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaFrm.Service.FirebaseAdminService(net6.0)", "MetaFrm.Service.FirebaseAdminService(net6.0)\MetaFrm.Service.FirebaseAdminService(net6.0).csproj", "{7302AB25-CC60-4CDC-BBC5-18B01373E770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaFrm.Service.FirebaseAdminService(net7.0)", "MetaFrm.Service.FirebaseAdminService(net7.0)\MetaFrm.Service.FirebaseAdminService(net7.0).csproj", "{53496E29-83A5-4978-9AFC-228F7152F0A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaFrm.Service.FirebaseAdminService(net7.0)", "MetaFrm.Service.FirebaseAdminService(net7.0)\MetaFrm.Service.FirebaseAdminService(net7.0).csproj", "{53496E29-83A5-4978-9AFC-228F7152F0A9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{519CBCCC-B1ED-4DC7-84ED-B220F603BBD1}"
 EndProject
@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build_6.0.yml = .github\workflows\build_6.0.yml
 		.github\workflows\build_7.0.yml = .github\workflows\build_7.0.yml
+		.github\workflows\build_8.0.yml = .github\workflows\build_8.0.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E719B0AB-46E3-41D9-BFDC-7675B94EC121}"
@@ -26,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루�
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaFrm.Service.FirebaseAdminService(net8.0)", "MetaFrm.Service.FirebaseAdminService(net8.0)\MetaFrm.Service.FirebaseAdminService(net8.0).csproj", "{2D88051C-4B4A-414E-AB8C-5F694C5158AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +44,10 @@ Global
 		{53496E29-83A5-4978-9AFC-228F7152F0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53496E29-83A5-4978-9AFC-228F7152F0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53496E29-83A5-4978-9AFC-228F7152F0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D88051C-4B4A-414E-AB8C-5F694C5158AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D88051C-4B4A-414E-AB8C-5F694C5158AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D88051C-4B4A-414E-AB8C-5F694C5158AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D88051C-4B4A-414E-AB8C-5F694C5158AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
