@@ -3,6 +3,7 @@ using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
 using MetaFrm.Database;
 using MetaFrm.Diagnostics;
+using MetaFrm.Extensions;
 using System.Text.Json;
 
 namespace MetaFrm.Service
@@ -12,17 +13,42 @@ namespace MetaFrm.Service
     /// </summary>
     public class FirebaseAdminService : IService
     {
+        private readonly Priority androidConfigPriority = Priority.Normal;
+        private int androidConfigTimeToLiveSeconds = 5;
+
         /// <summary>
         /// FirebaseAdminService
         /// </summary>
         public FirebaseAdminService()
         {
+            string tmp;
+
             if (FirebaseApp.DefaultInstance == null)
             {
                 FirebaseApp.Create(new AppOptions()
                 {
                     Credential = GoogleCredential.FromJson(GetGoogleCredential()),
                 });
+            }
+
+            try
+            {
+                tmp = this.GetAttribute("AndroidConfig.Priority");
+                this.androidConfigPriority = tmp.EnumParse<Priority>();
+            }
+            catch (Exception exception)
+            {
+                DiagnosticsTool.MyTrace(exception);
+            }
+
+            try
+            {
+                tmp = this.GetAttribute("AndroidConfig.TimeToLiveSeconds");
+                this.androidConfigTimeToLiveSeconds = tmp.ToInt();
+            }
+            catch (Exception exception)
+            {
+                DiagnosticsTool.MyTrace(exception);
             }
         }
 
@@ -95,6 +121,7 @@ namespace MetaFrm.Service
                                 ImageUrl = imageUrlType.IsNullOrEmpty() ? null : imageUrlType,
                             },
                             Data = keyValues,
+                            Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = new TimeSpan(0, 0, this.androidConfigTimeToLiveSeconds) },
                         });
                     }
                 }
