@@ -118,7 +118,7 @@ namespace MetaFrm.Service
                             Notification = new Notification()
                             {
                                 Title = serviceData.Commands[key].Values[i][nameof(Notification.Title)].StringValue,
-                                Body = serviceData.Commands[key].Values[i][nameof(Notification.Body)].StringValue,
+                                Body = $"{serviceData.Commands[key].Values[i][nameof(Notification.Body)].StringValue} {imageUrlType}",
                                 ImageUrl = imageUrlType.IsNullOrEmpty() ? null : imageUrlType,
                             },
                             Data = keyValues,
