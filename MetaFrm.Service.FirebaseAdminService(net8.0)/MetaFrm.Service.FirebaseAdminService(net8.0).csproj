@@ -10,7 +10,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>MetaFrm.Service.FirebaseAdminService.net8.0</PackageId>
     <Title>Meta Framework Service FirebaseAdminService</Title>
-    <Version>8.0.2.2</Version>
+    <Version>8.0.2.3</Version>
     <Authors>dsun</Authors>
     <Company>Meta Framework</Company>
     <Product>Meta Framework Service FirebaseAdminService</Product>

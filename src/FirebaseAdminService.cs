@@ -98,7 +98,8 @@ namespace MetaFrm.Service
                             if (imageUrlType.IsNullOrEmpty())
                                 imageUrlType = "OK";
 
-                            imageUrlType = this.GetAttribute(imageUrlType);
+                            if (!Uri.IsWellFormedUriString(imageUrlType, UriKind.Absolute))
+                                imageUrlType = this.GetAttribute(imageUrlType);
                         }
                         catch (Exception exception)
                         {
