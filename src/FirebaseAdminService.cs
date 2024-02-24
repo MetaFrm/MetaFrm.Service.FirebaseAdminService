@@ -88,7 +88,6 @@ namespace MetaFrm.Service
                 {
                     for (int i = 0; i < serviceData.Commands[key].Values.Count; i++)
                     {
-                        string tmp = "";
                         string? imageUrlType;
                         string? dataJson;
                         Dictionary<string, string>? keyValues;
@@ -96,16 +95,11 @@ namespace MetaFrm.Service
                         try
                         {
                             imageUrlType = serviceData.Commands[key].Values[i][nameof(Notification.ImageUrl)].StringValue ?? "";
-
-                            tmp += $"1{imageUrlType}";
                             if (imageUrlType.IsNullOrEmpty())
                                 imageUrlType = "OK";
 
-                            tmp += $"2{imageUrlType}";
                             if (!Uri.IsWellFormedUriString(imageUrlType, UriKind.Absolute))
                                 imageUrlType = this.GetAttribute(imageUrlType);
-
-                            tmp += $"3{imageUrlType}";
                         }
                         catch (Exception exception)
                         {
@@ -124,7 +118,7 @@ namespace MetaFrm.Service
                             Notification = new Notification()
                             {
                                 Title = serviceData.Commands[key].Values[i][nameof(Notification.Title)].StringValue,
-                                Body = $"{serviceData.Commands[key].Values[i][nameof(Notification.Body)].StringValue} {tmp} xx",
+                                Body = serviceData.Commands[key].Values[i][nameof(Notification.Body)].StringValue,
                                 ImageUrl = imageUrlType.IsNullOrEmpty() ? null : imageUrlType,
                             },
                             Data = keyValues,
