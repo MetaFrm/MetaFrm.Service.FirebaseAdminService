@@ -148,7 +148,7 @@ namespace MetaFrm.Service
 
         private async Task<BatchResponse?> FirebaseSandMessage(List<Message> messages)
         {
-            var result = await FirebaseMessaging.DefaultInstance.SendAllAsync(messages);
+            var result = await FirebaseMessaging.DefaultInstance.SendEachAsync(messages);
 
             if (result.FailureCount > 0)
                 DeleteFirebaseFCM_Token(messages, result);
