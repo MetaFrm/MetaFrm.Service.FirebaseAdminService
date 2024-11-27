@@ -2,8 +2,8 @@
 using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
 using MetaFrm.Database;
-using MetaFrm.Diagnostics;
 using MetaFrm.Extensions;
+using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
 namespace MetaFrm.Service
@@ -14,7 +14,7 @@ namespace MetaFrm.Service
     public class FirebaseAdminService : IService
     {
         private readonly Priority androidConfigPriority = Priority.Normal;
-        private int androidConfigTimeToLiveSeconds = 5;
+        private readonly int androidConfigTimeToLiveSeconds = 5;
 
         /// <summary>
         /// FirebaseAdminService
@@ -38,7 +38,7 @@ namespace MetaFrm.Service
             }
             catch (Exception exception)
             {
-                DiagnosticsTool.MyTrace(exception);
+                Factory.Logger.LogError(exception, "{Message}", exception.Message);
             }
 
             try
@@ -48,7 +48,7 @@ namespace MetaFrm.Service
             }
             catch (Exception exception)
             {
-                DiagnosticsTool.MyTrace(exception);
+                Factory.Logger.LogError(exception, "{Message}", exception.Message);
             }
         }
 
@@ -81,7 +81,7 @@ namespace MetaFrm.Service
                 if (serviceData.ServiceName == null || !serviceData.ServiceName.Equals("MetaFrm.Service.FirebaseAdminService"))
                     throw new Exception("Not MetaFrm.Service.FirebaseAdminService");
 
-                messages = new();
+                messages = [];
                 response = new();
 
                 foreach (var key in serviceData.Commands.Keys)
@@ -103,7 +103,7 @@ namespace MetaFrm.Service
                         }
                         catch (Exception exception)
                         {
-                            DiagnosticsTool.MyTrace(exception);
+                            Factory.Logger.LogError(exception, "{Message}", exception.Message);
                             imageUrlType = null;
                         }
 
@@ -134,12 +134,12 @@ namespace MetaFrm.Service
             }
             catch (MetaFrmException exception)
             {
-                DiagnosticsTool.MyTrace(exception);
+                Factory.Logger.LogError(exception, "{Message}", exception.Message);
                 return new Response(exception);
             }
             catch (Exception exception)
             {
-                DiagnosticsTool.MyTrace(exception);
+                Factory.Logger.LogError(exception, "{Message}", exception.Message);
                 return new Response(exception);
             }
 
@@ -190,7 +190,7 @@ namespace MetaFrm.Service
                     throw new Exception("Delete FirebaseFCM Token  Fail !!");
         }
 
-        private void sample()
+        private void Sample()
         {
             ServiceData serviceData1 = new()
             {
