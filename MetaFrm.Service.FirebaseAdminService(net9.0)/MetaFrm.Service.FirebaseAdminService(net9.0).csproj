@@ -10,20 +10,23 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>MetaFrm.Service.FirebaseAdminService.net9.0</PackageId>
     <Title>Meta Framework Service FirebaseAdminService</Title>
-    <Version>9.0.4.43</Version>
+    <Version>9.0.4.50</Version>
     <Authors>dsun</Authors>
     <Company>Meta Framework</Company>
     <Product>Meta Framework Service FirebaseAdminService</Product>
     <Description>Meta Framework
-(Multi platform &amp; Meta management)
-		</Description>
+(Multi platform &amp; Meta management)</Description>
     <Copyright>Copyright 2025. dsun all rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/MetaFrm/MetaFrm.Service.FirebaseAdminService</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MetaFrm/MetaFrm.Service.FirebaseAdminService</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>meta;framework;dotnet;maui;</PackageTags>
     <SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ss:fffZ"))</SourceRevisionId>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\readme.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\src\FirebaseAdminService.cs" Link="FirebaseAdminService.cs" />
   </ItemGroup>
@@ -31,8 +34,8 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FirebaseAdmin" Version="3.2.0" />
-    <PackageReference Include="MetaFrm.Core.net9.0" Version="9.0.4.43" />
+    <PackageReference Include="FirebaseAdmin" Version="3.3.0" />
+    <PackageReference Include="MetaFrm.Core.net9.0" Version="9.0.4.50" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.png">
