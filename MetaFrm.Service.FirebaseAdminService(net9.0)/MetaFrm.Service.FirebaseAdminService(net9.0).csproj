@@ -10,7 +10,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>MetaFrm.Service.FirebaseAdminService.net9.0</PackageId>
     <Title>Meta Framework Service FirebaseAdminService</Title>
-    <Version>9.0.4.52</Version>
+    <Version>9.0.4.54</Version>
     <Authors>dsun</Authors>
     <Company>Meta Framework</Company>
     <Product>Meta Framework Service FirebaseAdminService</Product>
@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FirebaseAdmin" Version="3.3.0" />
-    <PackageReference Include="MetaFrm.Core.net9.0" Version="9.0.4.52" />
+    <PackageReference Include="MetaFrm.Core.net9.0" Version="9.0.4.54" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.png">
