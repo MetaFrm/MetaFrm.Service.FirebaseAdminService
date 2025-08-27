@@ -14,7 +14,7 @@ namespace MetaFrm.Service
     public class FirebaseAdminService : IService
     {
         private readonly Priority androidConfigPriority = Priority.Normal;
-        private readonly int androidConfigTimeToLiveSeconds = 5;
+        private readonly TimeSpan androidConfigTimeToLive = new(28, 0, 0, 0);
 
         /// <summary>
         /// FirebaseAdminService
@@ -22,6 +22,7 @@ namespace MetaFrm.Service
         public FirebaseAdminService()
         {
             string tmp;
+            string[] tmps;
 
             if (FirebaseApp.DefaultInstance == null)
             {
@@ -43,8 +44,18 @@ namespace MetaFrm.Service
 
             try
             {
-                tmp = this.GetAttribute("AndroidConfig.TimeToLiveSeconds");
-                this.androidConfigTimeToLiveSeconds = tmp.ToInt();
+                tmp = this.GetAttribute("AndroidConfig.TimeToLive");
+                tmps = tmp.Split(' ');
+
+                if (tmps.Length == 2)
+                {
+                    tmp = tmps[0];
+
+                    tmps = tmps[1].Split(':');
+
+                    if (tmps.Length == 3)
+                        this.androidConfigTimeToLive = new(tmp.ToInt(), tmps[0].ToInt(), tmps[1].ToInt(), tmps[2].ToInt());
+                }
             }
             catch (Exception exception)
             {
@@ -122,7 +133,7 @@ namespace MetaFrm.Service
                                 ImageUrl = imageUrlType.IsNullOrEmpty() ? null : imageUrlType,
                             },
                             Data = keyValues,
-                            Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = new TimeSpan(0, 0, this.androidConfigTimeToLiveSeconds) },
+                            Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = this.androidConfigTimeToLive },
                         });
                     }
                 }
