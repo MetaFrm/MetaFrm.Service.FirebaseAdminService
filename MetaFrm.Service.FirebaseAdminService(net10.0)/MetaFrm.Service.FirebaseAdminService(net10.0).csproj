@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>MetaFrm</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -8,9 +8,9 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>MetaFrm.Service.FirebaseAdminService.net8.0</PackageId>
+    <PackageId>MetaFrm.Service.FirebaseAdminService.net10.0</PackageId>
     <Title>Meta Framework Service FirebaseAdminService</Title>
-    <Version>8.0.4.70</Version>
+    <Version>10.0.0.0-beta1</Version>
     <Authors>dsun</Authors>
     <Company>Meta Framework</Company>
     <Product>Meta Framework Service FirebaseAdminService</Product>
@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FirebaseAdmin" Version="3.4.0" />
-    <PackageReference Include="MetaFrm.Core.net8.0" Version="8.0.4.70" />
+    <PackageReference Include="MetaFrm.Core.net10.0" Version="10.0.0.0-beta1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.png">
