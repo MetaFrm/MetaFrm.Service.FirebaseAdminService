@@ -10,13 +10,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>MetaFrm.Service.FirebaseAdminService.net10.0</PackageId>
     <Title>Meta Framework Service FirebaseAdminService</Title>
-    <Version>10.0.0.0</Version>
+    <Version>10.0.1.0</Version>
     <Authors>dsun</Authors>
     <Company>Meta Framework</Company>
     <Product>Meta Framework Service FirebaseAdminService</Product>
     <Description>Meta Framework
 (Multi platform &amp; Meta management)</Description>
-    <Copyright>Copyright 2025. dsun all rights reserved.</Copyright>
+    <Copyright>Copyright 2026. dsun all rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/MetaFrm/MetaFrm.Service.FirebaseAdminService</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MetaFrm/MetaFrm.Service.FirebaseAdminService</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FirebaseAdmin" Version="3.4.0" />
-    <PackageReference Include="MetaFrm.Core.net10.0" Version="10.0.0.0" />
+    <PackageReference Include="MetaFrm.Core.net10.0" Version="10.0.1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.png">
