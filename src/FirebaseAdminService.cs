@@ -71,11 +71,11 @@ namespace MetaFrm.Service
             string iv;
             
             key = this.GetAttribute("AesDecryptorKey");
-            if (key.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(key))
                 key = Factory.AccessKey;
 
             iv = this.GetAttribute("AesDecryptorKeyIV");
-            if (iv.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(iv))
                 iv = nameof(FirebaseAdminService);
 
             if (key.Length < 5 || iv.Length < 5)
@@ -110,7 +110,7 @@ namespace MetaFrm.Service
                         try
                         {
                             imageUrlType = command.Values[i][nameof(Notification.ImageUrl)].StringValue ?? "";
-                            if (imageUrlType.IsNullOrEmpty())
+                            if (string.IsNullOrEmpty(imageUrlType))
                                 imageUrlType = "OK";
 
                             if (!Uri.IsWellFormedUriString(imageUrlType, UriKind.Absolute))
@@ -125,7 +125,7 @@ namespace MetaFrm.Service
 
                         keyValues = null;
                         dataJson = command.Values[i][nameof(Message.Data)].StringValue ?? "";
-                        if (!dataJson.IsNullOrEmpty())
+                        if (!string.IsNullOrEmpty(dataJson))
                             keyValues = JsonSerializer.Deserialize<Dictionary<string, string>?>(dataJson);
 
                         messages.Add(new Message()
@@ -135,7 +135,7 @@ namespace MetaFrm.Service
                             {
                                 Title = command.Values[i][nameof(Notification.Title)].StringValue,
                                 Body = command.Values[i][nameof(Notification.Body)].StringValue,
-                                ImageUrl = imageUrlType.IsNullOrEmpty() ? null : imageUrlType,
+                                ImageUrl = string.IsNullOrEmpty(imageUrlType) ? null : imageUrlType,
                             },
                             Data = keyValues,
                             Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = this.androidConfigTimeToLive },
