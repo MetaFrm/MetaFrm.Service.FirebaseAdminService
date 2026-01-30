@@ -211,5 +211,12 @@ namespace MetaFrm.Service
                     Factory.Logger.LogError("Delete FirebaseFCM Token  Fail : {Message}", response.Message);
             }
         }
+
+        Task<Response> IService.RequestAsync(ServiceData serviceData)
+        {
+            Response response = ((IService)this).Request(serviceData);
+
+            return Task.FromResult(response);
+        }
     }
 }
