@@ -3,7 +3,6 @@ using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
 using MetaFrm.Database;
 using MetaFrm.Extensions;
-using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
 namespace MetaFrm.Service
