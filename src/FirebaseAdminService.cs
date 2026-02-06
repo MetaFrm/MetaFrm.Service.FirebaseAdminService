@@ -39,8 +39,7 @@ namespace MetaFrm.Service
             }
             catch (Exception exception)
             {
-                if (Factory.Logger.IsEnabled(LogLevel.Error))
-                    Factory.Logger.LogError(exception, "{Message}", exception.Message);
+                Factory.Logger.Error(exception, "{0}", exception.Message);
             }
 
             try
@@ -60,8 +59,7 @@ namespace MetaFrm.Service
             }
             catch (Exception exception)
             {
-                if (Factory.Logger.IsEnabled(LogLevel.Error))
-                    Factory.Logger.LogError(exception, "{Message}", exception.Message);
+                Factory.Logger.Error(exception, "{0}", exception.Message);
             }
         }
 
@@ -118,8 +116,7 @@ namespace MetaFrm.Service
                         }
                         catch (Exception exception)
                         {
-                            if (Factory.Logger.IsEnabled(LogLevel.Error))
-                                Factory.Logger.LogError(exception, "{Message}", exception.Message);
+                            Factory.Logger.Error(exception, "{0}", exception.Message);
                             imageUrlType = null;
                         }
 
@@ -150,8 +147,7 @@ namespace MetaFrm.Service
             }
             catch (Exception exception)
             {
-                if (Factory.Logger.IsEnabled(LogLevel.Error))
-                    Factory.Logger.LogError(exception, "{Message}", exception.Message);
+                Factory.Logger.Error(exception, "{0}", exception.Message);
                 return new Response(exception);
             }
 
@@ -171,8 +167,7 @@ namespace MetaFrm.Service
             }
             catch (Exception exception)
             {
-                if (Factory.Logger.IsEnabled(LogLevel.Error))
-                    Factory.Logger.LogError(exception, "{Message}", exception.Message);
+                Factory.Logger.Error(exception, "{0}", exception.Message);
             }
 
             return null;
@@ -207,8 +202,8 @@ namespace MetaFrm.Service
                 service = (IService)Factory.CreateInstance(serviceData.ServiceName);
                 response = service.Request(serviceData);
 
-                if (response.Status != Status.OK && Factory.Logger.IsEnabled(LogLevel.Error))
-                    Factory.Logger.LogError("Delete FirebaseFCM Token  Fail : {Message}", response.Message);
+                if (response.Status != Status.OK)
+                    Factory.Logger.Error("Delete FirebaseFCM Token  Fail : {0}", response.Message);
             }
         }
 
