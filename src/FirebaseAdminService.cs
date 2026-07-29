@@ -27,7 +27,7 @@ namespace MetaFrm.Service
             {
                 FirebaseApp.Create(new AppOptions()
                 {
-                    Credential = GoogleCredential.FromJson(GetGoogleCredential()),
+                    Credential = CredentialFactory.FromJson<GoogleCredential>(GetGoogleCredential()),
                 });
             }
 
@@ -126,7 +126,7 @@ namespace MetaFrm.Service
 
                         messages.Add(new Message()
                         {
-                            Token = command.Values[i][nameof(Message.Token)].StringValue,
+                            Fid = command.Values[i]["Token"].StringValue,
                             Notification = new Notification()
                             {
                                 Title = command.Values[i][nameof(Notification.Title)].StringValue,
@@ -192,7 +192,7 @@ namespace MetaFrm.Service
                 {
                     serviceData["1"].NewRow();
                     serviceData["1"].SetValue("TOKEN_TYPE", "Firebase.FCM");
-                    serviceData["1"].SetValue("TOKEN_STR", messages[i].Token);
+                    serviceData["1"].SetValue("TOKEN_STR", messages[i].Fid);
                 }
             }
 
