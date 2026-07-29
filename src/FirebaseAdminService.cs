@@ -27,7 +27,7 @@ namespace MetaFrm.Service
             {
                 FirebaseApp.Create(new AppOptions()
                 {
-                    Credential = CredentialFactory.FromJson<GoogleCredential>(GetGoogleCredential()),
+                    Credential = CredentialFactory.FromJson<ServiceAccountCredential>(GetGoogleCredential()).ToGoogleCredential(),
                 });
             }
 
