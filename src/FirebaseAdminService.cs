@@ -124,18 +124,38 @@ namespace MetaFrm.Service
                         if (!string.IsNullOrEmpty(dataJson))
                             keyValues = JsonSerializer.Deserialize<Dictionary<string, string>?>(dataJson);
 
-                        messages.Add(new Message()
+                        string token = command.Values[i]["Token"].StringValue ?? "";
+
+                        if (token.Length > 30)
                         {
-                            Fid = command.Values[i]["Token"].StringValue,
-                            Notification = new Notification()
+                            messages.Add(new Message()
                             {
-                                Title = command.Values[i][nameof(Notification.Title)].StringValue,
-                                Body = command.Values[i][nameof(Notification.Body)].StringValue,
-                                ImageUrl = string.IsNullOrEmpty(imageUrlType) ? null : imageUrlType,
-                            },
-                            Data = keyValues,
-                            Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = this.androidConfigTimeToLive },
-                        });
+                                Token = command.Values[i]["Token"].StringValue,
+                                Notification = new Notification()
+                                {
+                                    Title = command.Values[i][nameof(Notification.Title)].StringValue,
+                                    Body = command.Values[i][nameof(Notification.Body)].StringValue,
+                                    ImageUrl = string.IsNullOrEmpty(imageUrlType) ? null : imageUrlType,
+                                },
+                                Data = keyValues,
+                                Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = this.androidConfigTimeToLive },
+                            });
+                        }
+                        else
+                        {
+                            messages.Add(new Message()
+                            {
+                                Fid = command.Values[i]["Token"].StringValue,
+                                Notification = new Notification()
+                                {
+                                    Title = command.Values[i][nameof(Notification.Title)].StringValue,
+                                    Body = command.Values[i][nameof(Notification.Body)].StringValue,
+                                    ImageUrl = string.IsNullOrEmpty(imageUrlType) ? null : imageUrlType,
+                                },
+                                Data = keyValues,
+                                Android = new AndroidConfig() { Priority = this.androidConfigPriority, TimeToLive = this.androidConfigTimeToLive },
+                            });
+                        }
                     }
                 }
 
@@ -192,7 +212,11 @@ namespace MetaFrm.Service
                 {
                     serviceData["1"].NewRow();
                     serviceData["1"].SetValue("TOKEN_TYPE", "Firebase.FCM");
-                    serviceData["1"].SetValue("TOKEN_STR", messages[i].Fid);
+
+                    if (messages[i].Token.Length > 30)
+                        serviceData["1"].SetValue("TOKEN_STR", messages[i].Token);
+                    else
+                        serviceData["1"].SetValue("TOKEN_STR", messages[i].Fid);
                 }
             }
 
